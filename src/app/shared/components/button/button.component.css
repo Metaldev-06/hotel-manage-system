@@ -1,0 +1,23 @@
+button {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-x1);
+  border: none;
+  outline: none;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.edit {
+  background-color: var(--warning-color);
+  color: rgb(161, 161, 20);
+}
+
+.delete {
+  background-color: var(--danger-color);
+  color: rgb(151, 27, 27);
+}

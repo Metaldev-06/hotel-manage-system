@@ -1,0 +1,15 @@
+.rooms__section {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+span {
+  font-weight: bold;
+  text-align: center;
+  font-size: 2rem;
+}

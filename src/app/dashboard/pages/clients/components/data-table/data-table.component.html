@@ -1,0 +1,34 @@
+<nz-table
+  #basicTable
+  [nzData]="data().data"
+  [nzLoading]="loading()"
+  [nzFrontPagination]="false"
+  [nzTotal]="totalPage()"
+  [nzPageIndex]="1"
+>
+  <thead>
+    <tr>
+      @for (item of columns(); track $index) {
+        <th>{{ item.title | titlecase }}</th>
+      }
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (data of basicTable.data; track data.id) {
+      <tr>
+        <td>{{ data.id }}</td>
+        <td>{{ data.attributes.name }}</td>
+        <td>{{ data.attributes.phone }}</td>
+        <td>{{ data.attributes.address }}</td>
+        <td>{{ data.attributes.dni }}</td>
+        <td><app-badge-info [info]="data.attributes.partner" /></td>
+        <td>
+          <app-button icon="edit">Editar</app-button>
+          <nz-divider nzType="vertical"></nz-divider>
+          <app-button icon="delete">Borrar</app-button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</nz-table>

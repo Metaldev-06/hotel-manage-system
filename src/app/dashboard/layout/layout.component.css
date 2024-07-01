@@ -1,0 +1,44 @@
+nz-sider {
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
+  background: var(--white-color);
+}
+
+.logo {
+  height: 64px;
+  text-align: center;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+nz-header {
+  background: var(--white-color);
+  padding: 0;
+  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
+}
+
+nz-content {
+  width: 98%;
+  margin: 0 auto;
+}
+
+nz-breadcrumb {
+  margin: 16px 0;
+}
+
+.inner-content {
+  min-height: calc(100dvh - 130px);
+  max-height: calc(100dvh - 100px);
+  padding: 24px;
+  background: var(--white-color);
+  border-radius: var(--border-radius-x1);
+}
+
+nz-footer {
+  text-align: center;
+}
+
+nz-breadcrumb-item {
+  cursor: pointer;
+}

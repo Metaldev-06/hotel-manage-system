@@ -1,0 +1,15 @@
+<section class="calendar__section">
+  @defer (when !loading()) {
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  } @placeholder (minimum 500ms) {
+    <div class="loading">
+      <span nz-icon nzType="loading" nzTheme="outline"></span>
+    </div>
+  } @loading {
+    <div class="loading">
+      <span nz-icon nzType="loading" nzTheme="outline"></span>
+    </div>
+  } @error {
+    <span>Ups, algo salio mal</span>
+  }
+</section>

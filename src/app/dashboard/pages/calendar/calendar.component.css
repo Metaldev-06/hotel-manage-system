@@ -1,0 +1,18 @@
+.calendar__section {
+  width: 100%;
+  align-items: center;
+}
+
+.loading {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+full-calendar {
+  height: 100%;
+  max-height: calc(100dvh - 180px);
+}

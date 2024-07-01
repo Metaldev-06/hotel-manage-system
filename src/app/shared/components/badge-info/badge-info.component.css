@@ -1,0 +1,15 @@
+span {
+  padding: 0.2rem;
+  border-radius: var(--border-radius-x1);
+  font-weight: bold;
+}
+
+.success {
+  background-color: var(--success-color);
+  color: green;
+}
+
+.denied {
+  color: red;
+  background-color: var(--danger-color);
+}

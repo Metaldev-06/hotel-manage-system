@@ -1,0 +1,13 @@
+<section class="rooms__section">
+  @defer (when !loading()) {
+    @for (item of rooms(); track $index) {
+      <app-room-card [room]="item" />
+    }
+  } @placeholder (minimum 500ms) {
+    <span nz-icon nzType="loading" nzTheme="outline"></span>
+  } @loading {
+    <span nz-icon nzType="loading" nzTheme="outline"></span>
+  } @error {
+    <span>Ups, algo salio mal</span>
+  }
+</section>

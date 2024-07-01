@@ -1,0 +1,44 @@
+<nz-layout>
+  <nz-sider nzCollapsible nzWidth="200px" [nzTheme]="'light'">
+    <div class="logo">
+      <img
+        ngSrc="/images/logo.webp"
+        alt="logo"
+        width="70"
+        height="70"
+        priority
+      />
+    </div>
+
+    <ul nz-menu nzTheme="light" nzMode="inline">
+      @for (item of menuItem; track $index) {
+        <li
+          nz-menu-item
+          [routerLink]="item.link"
+          [title]="item.title | titlecase"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <span nz-icon [nzType]="item.icon"></span>
+          <span>{{ item.title | titlecase }}</span>
+        </li>
+      }
+    </ul>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-header></nz-header>
+
+    <nz-content>
+      <nz-breadcrumb [nzAutoGenerate]="true" [nzRouteLabel]="'breadcrumb'">
+        <nz-breadcrumb-item [routerLink]="['/']">Dashboard</nz-breadcrumb-item>
+      </nz-breadcrumb>
+
+      <div class="inner-content">
+        <ng-content />
+      </div>
+    </nz-content>
+
+    <!-- <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer> -->
+  </nz-layout>
+</nz-layout>
