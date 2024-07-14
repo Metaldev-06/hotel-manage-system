@@ -1,31 +1,23 @@
-export interface ClientData {
-  data: Datum[];
-  meta: Meta;
-}
-
-export interface Datum {
-  id: number;
-  attributes: Attributes;
-}
-
-export interface Attributes {
-  name: string;
-  address: string;
-  phone: string;
-  dni: string;
-  partner: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date;
-}
-
-export interface Meta {
+export interface Client {
+  data: ClientData[];
   pagination: Pagination;
 }
 
+export interface ClientData {
+  id: string;
+  name: string;
+  dni: string;
+  address: string;
+  phone: string;
+  partner: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface Pagination {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
+  totalRecords: number;
+  totalPages: number;
+  currentPage: number;
+  limit: number;
+  offset: number;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { RoomCardComponent } from '../../../shared/components/room-card/room-card.component';
 import { DataService } from '../../../core/services/data.service';
-import { Datum, RoomData } from '../../../core/interfaces/room.interfaces';
+import { Room, RoomData } from '../../../core/interfaces/room.interfaces';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
@@ -15,7 +15,7 @@ export class RoomsComponent implements OnInit {
   private readonly dataService = inject(DataService);
 
   public loading = signal<boolean>(true);
-  public rooms = signal<Datum[]>([]);
+  public rooms = signal<RoomData[]>([]);
 
   ngOnInit(): void {
     this.getRooms();
@@ -23,7 +23,7 @@ export class RoomsComponent implements OnInit {
 
   getRooms() {
     this.dataService.getRooms().subscribe({
-      next: (res: RoomData) => {
+      next: (res: Room) => {
         this.rooms.set(res.data);
         this.loading.set(false);
       },

@@ -1,28 +1,20 @@
-export interface RoomData {
-  data: Datum[];
-  meta: Meta;
-}
-
-export interface Datum {
-  id: number;
-  attributes: Attributes;
-}
-
-export interface Attributes {
-  room_number: number;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date;
-  type: string;
-}
-
-export interface Meta {
+export interface Room {
+  data: RoomData[];
   pagination: Pagination;
 }
 
+export interface RoomData {
+  id: number;
+  number: number;
+  type: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
 export interface Pagination {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
+  totalRecords: number;
+  totalPages: number;
+  currentPage: number;
+  limit: number;
+  offset: number;
 }

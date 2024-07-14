@@ -12,8 +12,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { TitleCasePipe } from '@angular/common';
 import { ButtonComponent } from '../../../../../shared/components/button/button.component';
-import { ClientData } from '../../../../../core/interfaces/client.interface';
 import { BadgeInfoComponent } from '../../../../../shared/components/badge-info/badge-info.component';
+import { Client } from '../../../../../core/interfaces/client.interface';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 interface Column {
   title: string;
@@ -28,25 +29,16 @@ interface Column {
     TitleCasePipe,
     ButtonComponent,
     BadgeInfoComponent,
+    NzIconModule,
   ],
   templateUrl: './data-table.component.html',
   styleUrl: './data-table.component.css',
 })
-export class DataTableComponent implements OnChanges {
-  public data = input<ClientData>({} as ClientData);
+export class DataTableComponent implements OnInit {
+  public data = input<Client>({} as Client);
   public columns = input<Column[]>([]);
   public loading = input<boolean>(true);
   public totalPage = signal<number>(0);
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['data'] && this.data()?.meta?.pagination) {
-      this.updateTotalPages();
-    }
-  }
-
-  private updateTotalPages(): void {
-    if (this.data()?.meta?.pagination) {
-      this.totalPage.set(this.data().meta.pagination.total);
-    }
-  }
+  ngOnInit(): void {}
 }

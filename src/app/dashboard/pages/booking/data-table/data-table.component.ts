@@ -28,7 +28,7 @@ interface Column {
   styleUrl: './data-table.component.css',
 })
 export class DataTableComponent {
-  public data = input<Booking>();
+  public data = input.required<Booking>();
   public columns = input<Column[]>([]);
   public loading = input<boolean>(true);
 }

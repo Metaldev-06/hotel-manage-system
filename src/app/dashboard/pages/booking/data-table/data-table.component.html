@@ -1,41 +1,47 @@
-<nz-table #basicTable [nzData]="data()!.data" [nzLoading]="loading()">
-  <thead>
-    <tr>
-      @for (item of columns(); track $index) {
-        <th>{{ item.title | titlecase }}</th>
-      }
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (data of basicTable.data; track data.id) {
+@defer (when !loading()) {
+  <nz-table
+    #basicTable
+    [nzData]="data().data"
+    [nzLoading]="loading()"
+    [nzFrontPagination]="false"
+    [nzTotal]="data().pagination.totalPages"
+    [nzPageIndex]="1"
+  >
+    <thead>
       <tr>
-        <td>{{ data.id }}</td>
-        <td>{{ data.attributes.client.data.attributes.name }}</td>
-        <td>{{ data.attributes.checking | date }}</td>
-        <td>{{ data.attributes.checkout | date }}</td>
-        <td>{{ data.attributes.rooms.data[0].attributes.room_number }}</td>
-        <td>{{ data.attributes.rooms.data[0].attributes.type | titlecase }}</td>
-        <td>
-          <app-badge-info
-            [info]="data.attributes.client.data.attributes.partner"
-          />
-        </td>
-        <td>
-          {{
-            data.attributes.category.data.attributes.price
-              | currency: "$" : "symbol-narrow" : "1.0-0"
-          }}
-        </td>
-        <td>
-          <app-badge-info [info]="data.attributes.paid" />
-        </td>
-        <td>
-          <app-button icon="edit">Editar</app-button>
-          <nz-divider nzType="vertical"></nz-divider>
-          <app-button icon="delete">Borrar</app-button>
-        </td>
+        @for (item of columns(); track $index) {
+          <th>{{ item.title | titlecase }}</th>
+        }
+        <th>Acciones</th>
       </tr>
-    }
-  </tbody>
-</nz-table>
+    </thead>
+    <tbody>
+      @for (data of basicTable.data; track data.id) {
+        <tr>
+          <td>{{ data.id }}</td>
+          <td>{{ data.client.name }}</td>
+          <td>{{ data.checking | date }}</td>
+          <td>{{ data.checkout | date }}</td>
+          <td>{{ data.room.number }}</td>
+          <td>{{ data.room.type | titlecase }}</td>
+          <td>
+            <app-badge-info [info]="data.client.partner" />
+          </td>
+          <td>
+            {{ data.price.price | currency: "$" : "symbol-narrow" : "1.0-0" }}
+          </td>
+          <td>
+            <app-badge-info [info]="data.paid" />
+          </td>
+          <td>
+            <app-button icon="edit">Editar</app-button>
+            <nz-divider nzType="vertical"></nz-divider>
+            <app-button icon="delete">Borrar</app-button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </nz-table>
+} @loading {
+  <span nz-icon nzType="loading" nzTheme="outline"></span>
+}

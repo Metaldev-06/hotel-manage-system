@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { DataService } from '../../../core/services/data.service';
-import { ClientData } from '../../../core/interfaces/client.interface';
+import { Client } from '../../../core/interfaces/client.interface';
 
 @Component({
   selector: 'app-clients',
@@ -11,9 +11,9 @@ import { ClientData } from '../../../core/interfaces/client.interface';
   styleUrl: './clients.component.css',
 })
 export class ClientsComponent implements OnInit {
-  private readonly bookingService = inject(DataService);
+  private readonly dataService = inject(DataService);
 
-  public data = signal<ClientData>({} as ClientData);
+  public data = signal<Client>({} as Client);
   public loading = signal<boolean>(true);
 
   ngOnInit(): void {
@@ -21,8 +21,8 @@ export class ClientsComponent implements OnInit {
   }
 
   getBookins(): void {
-    this.bookingService.getCLients().subscribe({
-      next: (res: ClientData) => {
+    this.dataService.getClients().subscribe({
+      next: (res: Client) => {
         this.data.set(res);
         this.loading.set(false);
       },
@@ -38,7 +38,7 @@ export class ClientsComponent implements OnInit {
 
   columnsData = [
     {
-      title: 'id',
+      title: '#',
     },
     {
       title: 'nombre',

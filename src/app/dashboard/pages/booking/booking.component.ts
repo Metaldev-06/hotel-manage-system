@@ -2,11 +2,12 @@ import { Component, inject, signal } from '@angular/core';
 import { DataTableComponent } from './data-table/data-table.component';
 import { DataService } from '../../../core/services/data.service';
 import { Booking } from '../../../core/interfaces/bookin.interface';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [DataTableComponent],
+  imports: [DataTableComponent, NzIconModule],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css',
 })

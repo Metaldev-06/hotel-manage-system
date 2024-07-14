@@ -49,12 +49,10 @@ export class CalendarComponent implements OnInit {
 
   updateCalendarEvents(bookings: BookingData[]): void {
     const events = bookings.map((booking) => ({
-      title: `Habitación N° ${booking.attributes.rooms.data[0].attributes.room_number}`,
-      start: new Date(booking.attributes.checking),
-      end: new Date(booking.attributes.checkout),
+      title: `Habitación N° ${booking.room.number}`,
+      start: new Date(booking.checking),
+      end: new Date(booking.checkout),
     }));
-
-    console.log(events);
 
     this.calendarOptions = {
       ...this.calendarOptions,
@@ -62,8 +60,6 @@ export class CalendarComponent implements OnInit {
     };
 
     // this.cdr.detectChanges();
-
-    console.log(this.calendarOptions);
   }
 
   calendarOptions: CalendarOptions = {

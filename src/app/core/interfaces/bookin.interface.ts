@@ -1,85 +1,52 @@
 export interface Booking {
   data: BookingData[];
-  meta: Meta;
-}
-
-export interface BookingData {
-  id: number;
-  attributes: Attribute;
-}
-
-export interface Attribute {
-  checking: Date;
-  checkout: Date;
-  num_adults: number;
-  num_kids: number;
-  paid: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date;
-  rooms: Rooms;
-  client: Client;
-  category: Category;
-}
-
-export interface Category {
-  data: CategoryData;
-}
-
-export interface CategoryData {
-  id: number;
-  attributes: CategoryAttributes;
-}
-
-export interface CategoryAttributes {
-  title: string;
-  price: string;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date;
-}
-
-export interface Client {
-  data: ClientData;
-}
-
-export interface ClientData {
-  id: number;
-  attributes: ClientAttributes;
-}
-
-export interface ClientAttributes {
-  name: string;
-  address: string;
-  phone: string;
-  dni: string;
-  partner: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date;
-}
-
-export interface Rooms {
-  data: RoomsData[];
-}
-
-export interface RoomsData {
-  id: number;
-  attributes: RoomsAttributes;
-}
-
-export interface RoomsAttributes {
-  room_number: number;
-  type: string;
-}
-
-export interface Meta {
   pagination: Pagination;
 }
 
+export interface BookingData {
+  id: string;
+  checking: Date;
+  checkout: Date;
+  paid: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  room: Room;
+  client: Client;
+  price: Price;
+}
+
+export interface Client {
+  id: string;
+  name: string;
+  dni: string;
+  address: string;
+  phone: string;
+  partner: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Price {
+  id: number;
+  category: string;
+  type: string;
+  price: number;
+  created_at: Date;
+  updated_at: Date;
+}
+
+export interface Room {
+  id: number;
+  number: number;
+  type: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
 export interface Pagination {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
+  totalRecords: number;
+  totalPages: number;
+  currentPage: number;
+  limit: number;
+  offset: number;
 }
